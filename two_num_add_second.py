@@ -37,4 +37,4 @@ class Solution:
         list3 = list(map(int, list3))
         print(list3)
 
-    addTwoNumbers(0)
+    addTwoNumbers(1)
