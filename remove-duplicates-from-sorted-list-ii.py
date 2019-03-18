@@ -11,18 +11,23 @@ class ListNode:
 
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
-        if head is None:
-            return None
-        cur = head
-        while cur.next:
-            if cur.val == cur.next.val:
-                if cur.next.next is None:
-                    cur.next = None
-                else:
-                    temp = cur.next.next
-                    cur.next = temp
+        only_list = []
+        only_dict = {}
+
+        head2 = ListNode(0)
+        p = head2
+        while head:
+            if head.val in only_dict:
+                only_dict[head.val] += 1
             else:
-                cur = cur.next
-        return head
+                only_list.append(head.val)
+                only_dict[head.val] = 1
+            head = head.next
+        for i in only_list:
+            if only_dict[i] == 1:
+                new = ListNode(i)
+                p.next = new
+                p = p.next
+        return head2.next
 
 
